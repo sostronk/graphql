@@ -12,6 +12,8 @@ Fully compatible with <https://github.com/shurcooL/graphql>
 
 You can simply replace `github.com/shurcooL/graphql` --> `github.com/Laisky/graphql` to access new features.
 
+> - [GraphQL 学习笔记](https://blog.laisky.com/p/graphql/)
+
 ## New Features
 
 ### Cache friendly
