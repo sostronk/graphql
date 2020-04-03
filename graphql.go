@@ -146,7 +146,7 @@ func (c *Client) do(ctx context.Context, op operationType, v interface{}, variab
 	}
 	var out struct {
 		Data   *json.RawMessage
-		Errors errors
+		Errors Errors
 		//Extensions interface{} // Unused.
 	}
 	err = json.NewDecoder(resp.Body).Decode(&out)
@@ -167,20 +167,21 @@ func (c *Client) do(ctx context.Context, op operationType, v interface{}, variab
 	return nil
 }
 
-// errors represents the "errors" array in a response from a GraphQL server.
+// Errors represents the "errors" array in a response from a GraphQL server.
 // If returned via error interface, the slice is expected to contain at least 1 element.
 //
 // Specification: https://facebook.github.io/graphql/#sec-Errors.
-type errors []struct {
+type Errors []struct {
 	Message   string
 	Locations []struct {
 		Line   int
 		Column int
 	}
+	Extensions interface{}
 }
 
 // Error implements error interface.
-func (e errors) Error() string {
+func (e Errors) Error() string {
 	return e[0].Message
 }
 

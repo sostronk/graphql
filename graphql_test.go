@@ -34,7 +34,11 @@ func TestClient_Query_partialDataWithErrorResponse(t *testing.T) {
 							"line": 10,
 							"column": 4
 						}
-					]
+					],
+					"extensions": {
+						"name": "ExtensionName",
+						"code": "EXTENSION_CODE"
+					}
 				}
 			]
 		}`)
@@ -55,6 +59,13 @@ func TestClient_Query_partialDataWithErrorResponse(t *testing.T) {
 	}
 	if got, want := err.Error(), "Could not resolve to a node with the global id of 'NotExist'"; got != want {
 		t.Errorf("got error: %v, want: %v", got, want)
+	}
+	errValue, ok := err.(graphql.Errors)
+	if !ok {
+		t.Errorf("got wrong error type: %T, want: graphql.Errors", err)
+	}
+	if errValue[0].Extensions == nil {
+		t.Errorf("got nil extensions, want non-nil")
 	}
 	if q.Node1 == nil || q.Node1.ID != "MDEyOklzc3VlQ29tbWVudDE2OTQwNzk0Ng==" {
 		t.Errorf("got wrong q.Node1: %v", q.Node1)
