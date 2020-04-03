@@ -11,6 +11,12 @@ import (
 	"github.com/Laisky/graphql/internal/jsonutil"
 )
 
+func defaultClientHeaders() map[string]string {
+	return map[string]string{
+		"Content-Type": "application/json",
+	}
+}
+
 // ClientOptFunc graphql client option
 type ClientOptFunc func(*Client)
 
@@ -55,12 +61,6 @@ func NewClient(url string, httpClient *http.Client, opts ...ClientOptFunc) (c *C
 		optf(c)
 	}
 	return c
-}
-
-func defaultClientHeaders() map[string]string {
-	return map[string]string{
-		"Content-Type": "application/json",
-	}
 }
 
 // Query executes a single GraphQL query request,
