@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Laisky/graphql"
-	"github.com/Laisky/graphql/internal/jsonutil"
+	"github.com/sostronk/graphql"
+	"github.com/sostronk/graphql/internal/jsonutil"
 )
 
 func TestUnmarshalGraphQL(t *testing.T) {
@@ -359,7 +359,7 @@ func TestUnmarshalGraphQL_union(t *testing.T) {
 	}
 }
 
-// Issue https://github.com/Laisky/githubv4/issues/18.
+// Issue https://github.com/sostronk/githubv4/issues/18.
 func TestUnmarshalGraphQL_arrayInsideInlineFragment(t *testing.T) {
 	/*
 		query {

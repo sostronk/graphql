@@ -3,14 +3,14 @@
 ![GitHub release](https://img.shields.io/github/release/Laisky/graphql.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Laisky/graphql)](https://goreportcard.com/report/github.com/Laisky/graphql)
-[![GoDoc](https://godoc.org/github.com/Laisky/graphql?status.svg)](https://godoc.org/github.com/Laisky/graphql)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sostronk/graphql)](https://goreportcard.com/report/github.com/sostronk/graphql)
+[![GoDoc](https://godoc.org/github.com/sostronk/graphql?status.svg)](https://godoc.org/github.com/sostronk/graphql)
 [![Build Status](https://travis-ci.org/Laisky/graphql.svg?branch=master)](https://travis-ci.org/Laisky/graphql)
 [![codecov](https://codecov.io/gh/Laisky/graphql/branch/master/graph/badge.svg)](https://codecov.io/gh/Laisky/graphql)
 
 Fully compatible with <https://github.com/shurcooL/graphql>
 
-You can simply replace `github.com/shurcooL/graphql` --> `github.com/Laisky/graphql` to access new features.
+You can simply replace `github.com/shurcooL/graphql` --> `github.com/sostronk/graphql` to access new features.
 
 > - [GraphQL 学习笔记](https://blog.laisky.com/p/graphql/)
 
@@ -42,7 +42,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/Laisky/graphql"
+	"github.com/sostronk/graphql"
 )
 
 type gcpLockQuery struct {

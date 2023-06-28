@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/Laisky/graphql/internal/jsonutil"
+	"github.com/sostronk/graphql/internal/jsonutil"
 )
 
 func defaultClientHeaders() map[string]string {
