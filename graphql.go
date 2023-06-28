@@ -66,19 +66,19 @@ func NewClient(url string, httpClient *http.Client, opts ...ClientOptFunc) (c *C
 // Query executes a single GraphQL query request,
 // with a query derived from q, populating the response into it.
 // q should be a pointer to struct that corresponds to the GraphQL schema.
-func (c *Client) Query(ctx context.Context, q interface{}, variables map[string]interface{}) error {
-	return c.do(ctx, queryOperation, q, variables)
+func (c *Client) Query(ctx context.Context, q interface{}, variables map[string]interface{}, headers map[string]string) error {
+	return c.do(ctx, queryOperation, q, variables, headers)
 }
 
 // Mutate executes a single GraphQL mutation request,
 // with a mutation derived from m, populating the response into it.
 // m should be a pointer to struct that corresponds to the GraphQL schema.
-func (c *Client) Mutate(ctx context.Context, m interface{}, variables map[string]interface{}) error {
-	return c.do(ctx, mutationOperation, m, variables)
+func (c *Client) Mutate(ctx context.Context, m interface{}, variables map[string]interface{}, headers map[string]string) error {
+	return c.do(ctx, mutationOperation, m, variables, headers)
 }
 
 // do executes a single GraphQL operation.
-func (c *Client) do(ctx context.Context, op operationType, v interface{}, variables map[string]interface{}) (err error) {
+func (c *Client) do(ctx context.Context, op operationType, v interface{}, variables map[string]interface{}, headers map[string]string) (err error) {
 	var query string
 	switch op {
 	case queryOperation:
@@ -131,6 +131,11 @@ func (c *Client) do(ctx context.Context, op operationType, v interface{}, variab
 	for k, val = range c.headers {
 		req.Header.Set(k, val)
 	}
+
+	for k, val = range headers {
+		req.Header.Set(k, val)
+	}
+
 	for k, val = range c.cookies {
 		req.AddCookie(&http.Cookie{Name: k, Value: val})
 	}
